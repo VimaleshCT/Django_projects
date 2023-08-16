@@ -1,0 +1,123 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Django Calculator App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body class ="bg-light">
+    <nav class="navbar navbar-expand-lg  navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Django Calculator App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            <li class= "nav-item">
+            <a class ="nav-link" href="#Instructions">Instructions</a>
+            </li>
+          </ul>
+         
+        </div>
+      </div>
+    </nav>
+    
+    <div class = "container-fluid" style= "margin-bottom : 25rem;" >
+      {%if error %}
+      <div class ="row">
+        <div class ="col-md-6" style="margin:0 auto;">
+         
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        </div>
+          </div>
+          {%endif%}
+          {% if result %}
+          <div class ="row">
+            <div class ="col-md-6" style="margin:0 auto;">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>{{q}} = {{ans}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+          {% endif%}
+       
+      <div class='row'>
+        <div class = "col-md-6" style="margin:1rem auto 0 auto;">
+          <img class="img-fluid" src="{% static 'main.jpeg'%}" style="padding: 5%;width:400px;">
+          <div class ='card'>
+            <div class="card-body">
+              <form method ="GET" action="{% url 'submitquery' %}">
+                <div class ="form-group">
+                  <input type="search" class="form-control" name="query" id="query">
+                </div>
+                <div class = 'row'>
+                  <div class='col-md-6'>
+                    <input type = "Submit" class = "btn btn-success" style="margin:1rem auto 0 auto;">
+                 
+                </div>
+                <div class ="col-md-6">
+                  <input type="Reset" class = "btn btn-danger" style="margin:1rem auto 0 auto;">
+                </div>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6" style = "margin : 1rem auto 0 auto;">
+          <p class ="display-4" id ="about" name="about" style ="text-align: center;">
+            About
+          </p>
+          <hr>
+          <p class="lead" style =" text-align: center;">
+            Our calculator app can perform mathematical operations.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6" style = "margin : 1rem auto 0 auto;">
+          <p class ="display-4" id ="Instructions" name="about" style ="text-align: center;">
+            Instructions
+          </p>
+          <hr>
+            <ul class="list-group">
+        
+              <li class="list-group-item"> + Addition</li>
+              <li class="list-group-item">* Multiplication</li>
+              <li class="list-group-item">/ Division</li>
+              <li class="list-group-item">//  Floor division</li>
+              <li class="list-group-item">-  Subtraction</li>
+              <li class="list-group-item">() Parenthesis</li>
+              <li class="list-group-item"> % Modulus</li>
+              <li class="list-group-item"> ** Exponential</li>
+            </ul>
+          
+        </div>
+      </div>
+
+    </div>
+    
+    <div class = 'container-fluid' >
+      <div class = 'row'>
+        <footer class ="fixed-bottom navbar-light" style = "background:black;color:white;text-align:center" >
+          <p>Thanks for using our app</p>
+        </footer> 
+        </div>
+      </div>
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
